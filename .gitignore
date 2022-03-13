@@ -4,3 +4,9 @@
 __pycache__/
 test.py
 predict.py
+*.vec
+Dockerfile
+setup.sh
+.vector_cache/wiki.simple.vec.pt
+setup.sh
+readme.md.backup

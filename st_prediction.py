@@ -25,7 +25,6 @@ def bar_chart(ps):
 
 st.title("Sentiment analysis based in the Amazon Reviews File.")
 
-
 text = st.text_area('Just insert the text you want to check for rating and press Calculate', value="")
 
 st.write('Please keep in mind that a longer review text means a most accurate value')
@@ -48,12 +47,8 @@ model.eval()
 
 sequence = padding(encoder(preprocessing(str(text)),ft_vec ), max_seq_len)
              
-print(sequence)
-
 input = ft_vectorizer(sequence)
-
 input.resize_(1, max_seq_len* ft_dim)
-# print(input.shape)
 
 output = model.forward(input)
 ps = f.softmax(output, dim = 1)
