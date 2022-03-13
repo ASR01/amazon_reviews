@@ -1,0 +1,6 @@
+# created by virtualenv automatically
+
+.vector_cahe/
+__pycache__/
+test.py
+predict.py
