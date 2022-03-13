@@ -2,31 +2,30 @@
 
 ## Preparation of the data.
 
-This text is included in torchtext an has 3.000.000 comments to amazon products.We can see that the data has the following structure.
+This text is included in torchtext an has 3.000.000 comments to amazon products. We can see that the data has the following structure.
 
 - Stars 
 - Title
 - MainBody
 
-So the first thing to do is to slice the data in tranches to be able to process the information (I do not have a data center with nice computer power at home)
+So the first thing to do is to slice the data in tranches to be able to process the information (I do not have a data center with nice computer power at home).
 
-So with this data it is necessaryto slice it.
+So with this data it is necessary to slice it.
 
  ### **a_prepare_data.py**
 
-This file justgenerates the .csv in order to load them afterwards.
+This file just generates the .csv in a sizable manner in order to load them afterwards.
 	
 ### **b_data_prep.py**
 
 Here is to find the preparation of the data after has been sliced accordingly.
 	
-The tokenicer is defined, in this case spacey.
+The tokenizer is defined, in this case spacey.
 	
 `nlp = spacy.load("en_core_web_sm")`
 
 
-
-The vectorizer I am using is Fasttext the simp,le verison, with 300 dimensions.	After defininf it, I am changing the vector associated with padded values en the asociated with none to -1 and 0 respectively.
+The vectorizer I am using is Fasttext the simple verison, with 300 dimensions.	After defining it, I am changing the vector associated with padded values and the asociated with not founded word -1 and 0 respectively.
 
 `ft_vec = FastText("simple")`
 
@@ -37,24 +36,25 @@ The vectorizer I am using is Fasttext the simp,le verison, with 300 dimensions.	
 
 With this two objects defined it is possible to perform the activities of removing the stop words, encoding the tokens 
 
-I will use the fasttext vectorizen model with a length of 300. This mean we will vertorize every token with a 300 dimension vector.
+I will use the fasttext vectorizer model with a length of 300. This mean I every token will have a 300 dimension vector for each token. If we limit the name of tokens to 32, this means we have a vector with 9600 dimensions entering the model.
 
-I order to keep the size of the data reasonable, I decided to introduce the vectorization part at the very last moment integrating it into the collate function of the dataloader class.
+In order to keep the size of the data reasonable, I decided to introduce the vectorization part at the very last moment integrating it into the collate function of the dataloader class.
 
 ### **c_model.py**
 
-Here is the model definition used a simple two full connected layers.
+Here is the model definition used a simple full connected layers. Because I am using the Corss Entropy Loss as loss function we will have to set the Softmax at the end and outside the model. 
 
 ### **d_model_training***
+
+Here we train the model importing all the required help classes from the other files.
 
 ## Use and install it
 
 If you want just to use the final model, you just have to run the streamlit version of the model with:
 
-
 `streamlit run st_predict.py`
 
-and in [localhost:8501](https://localhost:8501 "Localhost") yopu can se the results.
+and in [localhost:8501](https://localhost:8501 "Localhost") you can se the results.
 
 ## Results
 
@@ -88,6 +88,6 @@ WIth very short reviews, even usin a word like "junk" the results are not tat ac
 
 ## Docker
 
-With the Dockerfile included a full functional container container has been uploaded to Docker Hub. 
+With the Dockerfile included a full functional container has been uploaded to Docker Hub under the following address. 
 
 [To Docker Container](https://hub.docker.com/repository/docker/reeavsr/amz_rev)
