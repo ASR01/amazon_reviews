@@ -84,3 +84,10 @@ Here are a couple of examples of the model.
 
 WIth very short reviews, even usin a word like "junk" the results are not tat accurate. 
 ![Image](./images/Shorttext.png)
+
+
+## Docker
+
+With the Dockerfile included a full functional container container has been uploaded to Docker Hub. 
+
+[To Docker Container](https://hub.docker.com/repository/docker/reeavsr/amz_rev)
